@@ -1,0 +1,409 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WhereCV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Roboto Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+
+
+
+    <!-- Font Awesome -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- select 2 css -->
+    <link rel="stylesheet" href="{% static 'css/select2.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owlcarousel/owl.theme.default.min.css' %}">
+    <!-- main css -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cv_review.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cv_builder.css' %}">
+</head>
+
+<body>
+    <!-- main nav -->
+    <div class="container-fluid fluid-nav">
+        <div class="container cnt-tnar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light tjnav-bar">
+                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                <a href="/" class="nav-logo">
+                    <img src="{% static 'img/text_logo.png' %}">
+                </a>
+                <button class="navbar-toggler tnavbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa fa-bars icn-res" aria-hidden="true"></i>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto tnav-left tn-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Việc Làm IT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/company">Công ty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Hồ sơ và CV</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0 tnav-right tn-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i> <span
+                                    class="hidden-text">Tìm
+                                    kiếm</span></a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link">Xin chào, {{user.username}} | </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Đăng Xuất</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Đăng Ký</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Đăng Nhập</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                VI
+                            </a>
+                            <div class="dropdown-menu tdropdown" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">English</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-employers" href="#" tabindex="-1" aria-disabled="true">Nhà Tuyển
+                                Dụng</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- (end) main nav -->
+
+    <div class="clearfix"></div>
+
+<div class="resume_wrapper">
+	<div class="resume_left">
+		<div class="resume_image">
+			<img src="{{user_profile.avatar.url}}" alt="Resume_image">
+		</div>
+		<div class="resume_bottom">
+			<div class="resume_item resume_namerole">
+				<div class="name">{{user_profile.name}}</div>
+				<div class="role">{{user_profile.major}}</div>
+			</div>
+			<div class="resume_item resume_profile">
+				<div class="resume_title">Profile</div>
+				<div class="resume_info">{{user_profile.intro}}</div>
+			</div>
+			<div class="resume_item resume_address">
+				<div class="resume_title">Address</div>
+				<div class="resume_info">
+					{{user_profile.address}}
+				</div>
+			</div>
+			<div class="resume_item resume_contact">
+				<div class="resume_title">Contact</div>
+				<div class="resume_info">
+					<div class="resume_subtitle">Phone</div>
+					<div class="resume_subinfo">{{user_profile.phone}}</div>
+				</div>
+				<div class="resume_info">
+					<div class="resume_subtitle">Email</div>
+					<div class="resume_subinfo">{{user_profile.email}}</div>
+				</div>
+			</div>
+			<div class="resume_item resume_skills">
+				<div class="resume_title">Skills</div>
+				<div class="resume_info">
+					{{user_profile.skill}}
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="resume_right">
+		<div class="resume_item resume_namerole">
+			<div class="name">{{user_profile.name}}</div>
+			<div class="role">{{user_profile.major}}</div>
+		</div>
+		<div class="resume_item resume_education">
+			<div class="resume_title">Education</div>
+			<div class="resume_info">
+				<div class="resume_data">
+					<div class="year">{{user_profile.year_graduate}}</div>
+					<div class="content">
+						<p>{{user_profile.university}}</p>
+						<p>{{user_profile.degree}}</p>
+                        <p>{{user_profile.gpa}}</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="content">
+						
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="content">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="resume_item resume_experience">
+			<div class="resume_title">Experience</div>
+			<div class="resume_info">
+				<div class="resume_data">
+					<div class="year">{{user_profile.previous_work_year}}</div>
+					<div class="content">
+						<p>{{user_profile.previous_work_title}}</p>
+						<p>{{user_profile.previous_work}}</p>
+					</div>
+				</div>
+				<div class="resume_data">
+					<div class="content">
+						
+					</div>
+				</div>
+				<div class="resume_data">
+					
+					<div class="content">
+						
+					</div>
+				</div>
+				<div class="resume_data">
+					
+					<div class="content">
+						
+					</div>
+				</div>
+				<div class="resume_data">
+					
+					<div class="content">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		 <div class="resume_item resmue_interests">
+			<div class="resume_title">Interests</div>
+			<div class="resume_info">
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-volleyball-ball"></i>
+					</div>
+					<div class="int_data">Volleyball</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-book-open"></i>
+					</div>
+					<div class="int_data">Reading</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-film"></i>
+					</div>
+					<div class="int_data">Movies</div>
+				</div>
+				<div class="interests">
+					<div class="int_icon">
+						<i class="fas fa-biking"></i>
+					</div>
+					<div class="int_data">Riding</div>
+				</div>
+			</div>
+		</div> 
+	</div>
+</div>
+{% comment %} {% if user.username == user_profile.postAuthor  %} {% endcomment %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="user_profile" class="create-CV" value="{{user_profile.id}}">Xóa CV</button>
+    </form>    
+{% comment %} {% endif %} {% endcomment %}
+<a href="/cv_builder/list" class = "congty-name">Xem danh sách CV</a>
+
+   
+
+    <!-- job support -->
+    <div class="container-fluid job-support-wrapper">
+        <div class="container-fluid job-support-wrap">
+            <div class="container job-support">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <ul class="spp-list">
+                            <li>
+                                <span><i class="fa fa-question-circle pr-2 icsp"></i>Hỗ trợ nhà tuyển dụng:</span>
+                            </li>
+                            <li>
+                                <span><i class="fa fa-phone pr-2 icsp"></i>0123.456.789</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-12">
+                        <div class="newsletter">
+                            <span class="txt6">Đăng ký nhận bản tin việc làm</span>
+                            <div class="input-group frm1">
+                                <input type="text" placeholder="Nhập email của bạn"
+                                    class="newsletter-email form-control">
+                                <a href="#" class="input-group-addon"><i class="fa fa-lg fa-envelope-o colorb"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- (end) job support -->
+
+    <!-- footer -->
+    <div class="container-fluid footer-wrap  clear-left clear-right">
+        <div class="container footer">
+            <div class="row">
+                <div class="col-md-4 col-sm-8 col-12">
+                    <h2 class="footer-heading">
+                        <span>About</span>
+                    </h2>
+                    <p class="footer-content">
+                        Web tim viec vip
+                    </p>
+                    <ul class="footer-contact">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-phone fticn"></i> +123 456 7890
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-envelope fticn"></i>
+                                hello@123.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-map-marker fticn"></i>
+                                UIT, HCM
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-4 col-12">
+                    <h2 class="footer-heading">
+                        <span>Ngôn ngữ nổi bật</span>
+                    </h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Javascript</a></li>
+                        <li><a href="#">Java</a></li>
+                        <li><a href="#">Frontend</a></li>
+                        <li><a href="#">SQL Server</a></li>
+                        <li><a href="#">.NET</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-6 col-12">
+                    <h2 class="footer-heading">
+                        <span>Tất cả ngành nghề</span>
+                    </h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Lập trình viên</a></li>
+                        <li><a href="#">Kiểm thử phần mềm</a></li>
+                        <li><a href="#">Kỹ sư cầu nối</a></li>
+                        <li><a href="#">Quản lý dự án</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-6 col-12">
+                    <h2 class="footer-heading">
+                        <span>Tất cả hình thức</span>
+                    </h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Nhân viên chính thức</a></li>
+                        <li><a href="#">Nhân viên bán thời gian</a></li>
+                        <li><a href="#">Freelancer</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 col-sm-12 col-12">
+                    <h2 class="footer-heading">
+                        <span>Tất cả tỉnh thành</span>
+                    </h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Hồ Chính Minh</a></li>
+                        <li><a href="#">Hà Nội</a></li>
+                        <li><a href="#">Đà Nẵng</a></li>
+                        <li><a href="#">Buôn Ma Thuột</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid copyright-wrap">
+        <div class="container copyright">
+            <p class="copyright-content">
+                Copyright © <a href="#"> Where<b>CV</b></a>. All Right Reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- (end) footer -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/readmore.js"></script>
+    <script type="text/javascript">
+        $('.catelog-list').readmore({
+            speed: 75,
+            maxHeight: 150,
+            moreLink: '<a href="#">Xem thêm<i class="fa fa-angle-down pl-2"></i></a>',
+            lessLink: '<a href="#">Rút gọn<i class="fa fa-angle-up pl-2"></i></a>'
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/select2.min.js' %}"></script>
+    <script src="{% static 'js/jobdata.js' %}"></script>
+
+    <!-- <script type="text/javascript" src="js/pagination.js"></script> -->
+    <!-- Owl Stylesheets Javascript -->
+    <script src="{% static 'js/owlcarousel/owl.carousel.js' %}"></script>
+    <!-- Read More Plugin -->
+
+
+
+</body>
+
+</html>

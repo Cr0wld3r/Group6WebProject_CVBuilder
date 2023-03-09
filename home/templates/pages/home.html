@@ -1,0 +1,209 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{%block content %}
+    <!-- job board & sidebar section  -->
+    <div class="container-fluid jb-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- job board -->
+                <div class="col-md-8 col-sm-12 col-12">
+                    <div class="job-board-wrap">
+                        <h2 class="widget-title">
+                            <span>Việc Làm Tuyển Gấp</span>
+                        </h2>
+
+                        <div class="job-group">
+                            {% for job in jobs %}
+                            <div class="job pagi">
+                                <div class="job-content">
+                                    <div class="job-logo">
+                                        <a href="/job-detail/{{job.id}}">
+                                            <img src="{{job.image.url}}" class="job-logo-ima" alt="job-logo">
+                                        </a>
+                                    </div>
+
+                                    <div class="job-desc">
+                                        <div class="job-title">
+                                            <a href="/job-detail/{{job.id}}">{{job.title}}</a>
+                                        </div>
+                                        <div class="job-company">
+                                            <a href="/job-detail/{{job.id}}">{{job.company}}</a>
+                                        </div>
+
+                                        <div class="job-inf">
+                                            <a href="/job-detail/{{job.id}}" class="job-address"><i class="fa fa-map-marker pr-2"
+                                                    aria-hidden="true"></i>{{job.address}}</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="wrap-btn-appl">
+
+                                        <a href="#" class="btn btn-appl"><i class="fa fa-heart-o"
+                                                aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endfor%}
+                            
+                            <div class="readmorestyle-wrap">
+                                <a href="#" class="readallstyle reads1">Xem tất cả</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- (end) job board -->
+                <!-- sidebar -->
+                <div class="col-md-4 col-sm-12 col-12 clear-left">
+                    <div class="job-sidebar">
+                        <h2 class="widget-title">
+                            <span>Ngành Nghề</span>
+                        </h2>
+                        <div class="catelog-list">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>Lập trình viên</em>
+                                        </span>
+                                        <span class="cate-count">(1100)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>Nhân viên kiểm thử</em>
+                                        </span>
+                                        <span class="cate-count">(230)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>Kỹ sư cầu nối</em>
+                                        </span>
+                                        <span class="cate-count">(110)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>Designer</em>
+                                        </span>
+                                        <span class="cate-count">(2300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>Product Manager</em>
+                                        </span>
+                                        <span class="cate-count">(99)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="cate-img">
+                                            <em>HR</em>
+                                        </span>
+                                        <span class="cate-count">(300)</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="readallstyle reads1">Xem tất cả</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="job-sidebar">
+                        <div class="sb-banner">
+                            <img src="img/ads1.jpg" class="advertisement">
+                        </div>
+                    </div>
+                </div>
+                <!-- (end) sidebar -->
+            </div>
+        </div>
+    </div>
+    <!-- (end) job board & sidebar section  -->
+
+    <!-- top employer -->
+    <div class="container-fluid">
+        <div class="container top-employer">
+            <div class="row">
+                <div class="col-md-12 top-employer-contain">
+                    <div class="header">
+                        <h3>Nhà tuyển dùng hàng đầu</h3>
+                    </div>
+                    <div class="row">
+                    {% for company in companies %}
+                        <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
+                            <div class="top-employer-item">
+                                <a href="/company/{{company.id}}">
+                                    <div class="emp-img-thumb">
+                                        <img src="{{company.image.url}}">
+                                    </div>
+                                    <h3 class="company">{{company.title}}</h3>
+                                </a>
+                            </div>
+                        </div>
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- (end) top employer -->
+{% endblock %}

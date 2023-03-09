@@ -1,0 +1,221 @@
+{% extends '../base.html' %}
+{% load static %}
+{%block content %}
+<div class="container">
+        <div class="box-detail-job card bg-white text-black">
+            <div class="box-body row">
+                <a href="#" title="CÔNG TY TNHH MANULIFE (VIỆT NAM) (NTNN)" class="company-logo col">
+
+                    <div class="box-company-logo rounded-circle">
+                        <img src="{{detail.image.url}}" alt="{{detail.company}}"
+                            class="img-responsive">
+                    </div>
+                </a>
+
+                <div class="box-info-job col-6">
+                    <h1 class="job-title text-highlight bold" style="overflow-wrap:break-word;">
+                        {{detail.title}}
+                    </h1>
+                    <div class="company-title">
+                        <a href="#" class="text-dark-blue">{{detail.company}}</a>
+                    </div>
+
+                    <div class="job-deadline">
+                        <i class="fa-regular fa-clock"></i> Hạn nộp hồ sơ:
+                        07/01/2023
+                    </div>
+                </div>
+
+                <div class="box-apply col align-self-center">
+                    <p><a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CV-online-modal"><i
+                                class="fa fa-regular fa-paper-plane"></i> ỨNG TUYỂN NGAY</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal CV Online -->
+    <div class="modal fade" id="CV-online-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title">Ứng tuyển cho công việc hiện tại</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body row row-cols-2">
+                    <div class="text-content col-8">
+                        <h5>Chọn CV online của bạn hoặc</h5>
+                    </div>
+                    <div class="btn btn-primary col-4" data-bs-target="#Upload-modal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">
+                        <i class='fa fa-arrow-circle-o-up'></i>
+                        Tải lên từ máy tính
+                    </div>
+
+                    <!-- Them cac CV template o day -->
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light float-right ml-2" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary float-right">Nộp CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal Upload from computer -->
+    <div class="modal fade" id="Upload-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title">Ứng tuyển cho công việc hiện tại</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body row">
+                    <div class="text-content col-8">
+                        <h5>Tải CV của bạn lên từ máy tính hoặc</h5>
+                    </div>
+                    <div class="btn btn-primary col-4" data-bs-target="#CV-online-modal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">
+                        <i class='fa fa-arrow-circle-o-up'></i>
+                        Chọn CV online
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">File doc, docx, pdf</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Họ và tên: </label>
+                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email: </label>
+                        <input type="email" class="form-control" id="email" placeholder="@gmail.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phonenumber" class="form-label">Số điện thoại </label>
+                        <input type="number" class="form-control" id="phonenumber" placeholder="Số điện thoại của bạn">
+                    </div>
+                    <div class="">
+
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light float-right ml-2" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary float-right">Nộp CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tab-company" class="container">
+        <ul class="nav nav-pills">
+            <li class="active my-3 mr-5"><a href="#tab-info-job" data-toggle="tab">Thông tin tuyển dụng</a></li>
+            <li class="my-3"><a href="/company/{{detail.company.id}}">Thông tin công ty</a></li>
+        </ul>
+    </div>
+
+    <div class="container" id="tab-info-job">
+        <div class="box-info-job card bg-white text-black">
+            <h2 class="box-title d-flex justify-content-center">Chi tiết tin tuyển dụng</h2>
+            <div class="box-info container">
+                <p><ins>Thông tin chung</ins></p>
+                <div class="box-main row">
+                    <div class="box-item col">
+                        <img src="{% static 'img/money.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Mức lương </b> <br>
+                            <span>
+                                {{detail.payment}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="box-item col">
+                        <img src="{% static 'img/group.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Số lượng tuyển </b> <br>
+                            <span>10 người</span>
+                        </div>
+                    </div>
+                    <div class="box-item col">
+                        <img src="{% static 'img/workplace.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Hình thức làm việc </b> <br>
+                            <span>Toàn thời gian</span>
+                        </div>
+                    </div>
+                    <div class="w-100"></div>
+                    <div class="box-item col">
+                        <img src="{% static 'img/medal.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Cấp bậc </b> <br>
+                            <span>Nhân viên</span>
+                        </div>
+                    </div>
+                    <div class="box-item col">
+                        <img src="{% static 'img/sex.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Giới tính </b> <br>
+                            <span>Không yêu cầu</span>
+                        </div>
+                    </div>
+                    <div class="box-item col">
+                        <img src="{% static 'img/experience.svg' %}" alt="" width="50" height="50">
+                        <div>
+                            <b>Kinh nghiệm </b> <br>
+                            <span>Không yêu cầu kinh nghiệm</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-address container">
+                <p><ins>Địa điểm làm việc</ins></p>
+                <div>
+                    <div style="margin-bottom: 10px">- {{detail.address}}
+                    </div>
+                </div>
+            </div>
+            <div class="job-data">
+                <h3>Mô tả công việc</h3>
+                <div class="content-tab">
+                    <p>{{detail.description}}
+                    </p>
+                </div>
+                <h3>Yêu cầu ứng viên</h3>
+                <div class="content-tab">
+                    <p>{{detail.requirement}}
+                    </p>
+                    <p><br /></p>
+                </div>
+                <h3>Quyền lợi</h3>
+                <div class="content-tab">
+                    <p>{{detail.policy}}
+                    </p>
+                    <p><br /></p>
+                    <p>
+                    </p>
+                </div>
+                <h3>Cách thức ứng tuyển</h3>
+                <div class="box-how-to-apply">
+                    <p>Ứng viên nộp hồ sơ trực tuyến bằng cách bấm <b class="text-highlight">Ứng tuyển
+                            ngay</b> dưới đây.</p>
+                    <div class="d-flex box-btn d-flex justify-content-center">
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CV-online-modal">ỨNG TUYỂN NGAY</a>
+                    </div>
+                    <p>Hạn nộp hồ sơ: dd/mm/yyyy</p>
+                </div>
+            </div>
+        </div>
+{%endblock%}

@@ -1,0 +1,31 @@
+{% extends '../base.html' %}
+{% load static %}
+{%block content %}
+<!-- top employer -->
+    <div class="container-fluid">
+        <div class="container top-employer">
+            <div class="row">
+                <div class="col-md-12 top-employer-contain">
+                    <div class="header">
+                        <h3 style="color:white">DANH SÁCH CÁC CÔNG TY NỔI BẬT</h3>
+                    </div>
+                    <div class="row">
+                    {% for company in companies %}
+                        <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
+                            <div class="top-employer-item">
+                                <a href="/company/{{company.id}}">
+                                    <div class="emp-img-thumb">
+                                        <img src="{{company.image.url}}">
+                                    </div>
+                                    <h3 class="company">{{company.title}}</h3>
+                                </a>
+                            </div>
+                        </div>
+                     {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- (end) top employer -->
+{% endblock %}

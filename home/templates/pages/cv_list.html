@@ -1,0 +1,38 @@
+{% extends '../base.html' %}
+{% load static %}
+{%block content %}
+<!-- top employer -->
+    <div class="container-fluid">
+        <div class="container top-employer">
+            <div class="row">
+                <div class="col-md-12 top-employer-contain">
+                    <div class="header">
+                        <h3 style="color:white">CV CỦA BẠN</h3>
+                    </div>
+                    <div class="row">
+                    
+                    {% for c in profile %}
+                   
+                        <div class="col-md-3 col-sm-6 col-12 top-employer-wrap">
+                            <div class="top-employer-item">
+                                <a href="/cv_builder/{{c.id}}">
+                                    <div class="emp-img-thumb">
+                                        <img src="{{c.avatar.url}}">
+                                    </div>
+                                    <h3 class="company">{{c.name}}</h3>
+                                </a>
+                            </div>
+                        </div>
+                      
+                     {% endfor %}
+                     
+                    </div>
+                    <a href="/cv_builder">
+                        <button class="add-cv">Tạo CV mới</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- (end) top employer -->
+{% endblock %}

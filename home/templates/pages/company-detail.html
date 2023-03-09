@@ -1,0 +1,135 @@
+{% extends '../base.html' %}
+{% load static %}
+{%block content %}
+<div class="container">
+        <div class="box-detail-job card bg-white text-black">
+            <div class="box-body row">
+                <a title="{{detail.title}}" class="company-logo col">
+
+                    <div class="box-company-logo rounded-circle">
+                        <img src="{{detail.image.url}}" alt="{{detail.title}}"
+                            class="img-responsive">
+                    </div>
+                </a>
+
+                <div class="box-info-job col-6">
+                    <h1 class="job-title text-highlight bold" style="overflow-wrap:break-word;">
+                       {{detail.title}}
+                    </h1>
+
+                    <div class="job-deadline">
+                        <i class="fa-regular fa-clock"></i> 1000+ Nhân viên
+                    </div>
+                </div>
+
+                <div class="box-apply col align-self-center">
+                    <p><a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#CV-online-modal"><i
+                                class="fa fa-regular fa-paper-plane"></i> Theo dõi</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal CV Online -->
+    <div class="modal fade" id="CV-online-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title">Ứng tuyển cho công việc hiện tại</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body row row-cols-2">
+                    <div class="text-content col-8">
+                        <h5>Chọn CV online của bạn hoặc</h5>
+                    </div>
+                    <div class="btn btn-primary col-4" data-bs-target="#Upload-modal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">
+                        <i class='fa fa-arrow-circle-o-up'></i>
+                        Tải lên từ máy tính
+                    </div>
+
+                    <!-- Them cac CV template o day -->
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light float-right ml-2" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary float-right">Nộp CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal Upload from computer -->
+    <div class="modal fade" id="Upload-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h3 class="modal-title">Ứng tuyển cho công việc hiện tại</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body row">
+                    <div class="text-content col-8">
+                        <h5>Tải CV của bạn lên từ máy tính hoặc</h5>
+                    </div>
+                    <div class="btn btn-primary col-4" data-bs-target="#CV-online-modal" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">
+                        <i class='fa fa-arrow-circle-o-up'></i>
+                        Chọn CV online
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">File doc, docx, pdf</label>
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Họ và tên: </label>
+                        <input type="text" class="form-control" id="name" placeholder="Nhập họ và tên">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email: </label>
+                        <input type="email" class="form-control" id="email" placeholder="@gmail.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phonenumber" class="form-label">Số điện thoại </label>
+                        <input type="number" class="form-control" id="phonenumber" placeholder="Số điện thoại của bạn">
+                    </div>
+                    <div class="">
+
+                    </div>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light float-right ml-2" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary float-right">Nộp CV</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="tab-info-job">
+        <div class="box-info-job card bg-white text-black">
+            <div class="job-data">
+                <h3>Giới thiệu</h3>
+                <div class="content-tab">
+                    {{detail.description}}
+                </div>
+                <h3>Địa chỉ</h3>
+                <div class="content-tab">
+                    <p>{{detail.address}}</p>
+                </div>
+                <h3>Công việc tuyển dụng</h3>
+                <div class="content-tab">
+                    
+                </div>
+            </div>
+        </div>
+{% endblock %}
